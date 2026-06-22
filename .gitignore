@@ -4,8 +4,12 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 
-# Local/raw data. Generated dashboard artifacts are intentionally not ignored.
-combined_autism_poses/
+# Generated dashboard outputs — regenerated from your own .h5 files, not committed.
+/qc_dashboard.html
+qc_dashboard_data/
+
+# Your input pose files.
+*.h5
 
 # OS/editor noise.
 .DS_Store
