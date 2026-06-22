@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local/raw data. Generated dashboard artifacts are intentionally not ignored.
+combined_autism_poses/
+
+# OS/editor noise.
+.DS_Store
+*.swp
