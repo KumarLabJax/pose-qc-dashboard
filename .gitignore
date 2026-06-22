@@ -8,8 +8,9 @@ __pycache__/
 /qc_dashboard.html
 qc_dashboard_data/
 
-# Your input pose files.
+# Your input pose files (and any local data folders).
 *.h5
+combined_autism_poses/
 
 # OS/editor noise.
 .DS_Store
