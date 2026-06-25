@@ -50,5 +50,7 @@ def write_json_artifacts(data: dict[str, Any], output_dir: Path) -> None:
     (output_dir / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
     for video in data["videos"]:
-        name = Path(video["file"]).stem + ".json"
+        # video["file"] may be a sub-folder-relative path (e.g. "groupA/foo.h5");
+        # flatten "/" to "__" so same-named files in different folders don't collide.
+        name = Path(video["file"].replace("/", "__")).stem + ".json"
         (videos_dir / name).write_text(json.dumps(video, indent=2), encoding="utf-8")

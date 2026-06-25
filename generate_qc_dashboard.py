@@ -43,12 +43,20 @@ def main() -> None:
     parser.add_argument("--no-json", action="store_true", help="Skip writing JSON artifacts")
     parser.add_argument("--fps", type=float, default=30.0)
     parser.add_argument("--bin-sec", type=float, default=20.0)
+    parser.add_argument(
+        "--pose-version",
+        type=int,
+        default=6,
+        help="Pose file version to include, matched as the _pose_est_v<N>.h5 filename suffix (default: 6)",
+    )
     args = parser.parse_args()
 
     template_path = resolve_template_path(args.output, args.template)
     data_dir = args.data_dir or default_data_dir(args.output)
 
-    data = build_dashboard_data(args.input_dir, fps=args.fps, bin_sec=args.bin_sec)
+    data = build_dashboard_data(
+        args.input_dir, fps=args.fps, bin_sec=args.bin_sec, pose_version=args.pose_version
+    )
     render_dashboard(template_path=template_path, output_path=args.output, data=data)
     if not args.no_json:
         write_json_artifacts(data, data_dir)

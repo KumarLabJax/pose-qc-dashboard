@@ -26,6 +26,19 @@ python generate_qc_dashboard.py /path/to/your/h5_folder -o qc_dashboard.html
 
 Then open the resulting `qc_dashboard.html` in any web browser (double-click it).
 
+The folder is searched **recursively**, so pose files inside sub-folders are included too.
+By default only files named `*_pose_est_v6.h5` (pose version 6) are used. If your files are a
+different version, select it with `--pose-version`:
+
+```bash
+python generate_qc_dashboard.py /path/to/your/h5_folder -o qc_dashboard.html --pose-version 6
+```
+
+Picking a single version is also how you avoid duplicate entries when a folder holds several
+pose versions of the same recording (e.g. both `..._pose_est_v4.h5` and `..._pose_est_v6.h5`).
+If two files share the same name in different sub-folders, both are kept and labeled by their
+sub-folder so they don't clash.
+
 If your videos were **not** recorded at 30 frames per second, pass your frame rate so the
 time axes are labeled correctly:
 
